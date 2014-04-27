@@ -162,32 +162,32 @@ public class Screen {
           xp -= xOffset;
           yp -= yOffset;
           
-          for (int y = 0; y < 16; y++){
+          for (int y = 0; y < 32; y++){
               //offset y
               
               int ya = y + yp;
               int ys = y;
               if(flip == 2 || flip == 3){
-                   ys = 15 - y;
+                   ys = 31 - y;
               }
-               for (int x = 0; x <16; x++){
+               for (int x = 0; x < 32; x++){
               //offset x
               int xa = x + xp;
               int xs = x;
               //only render tiles visable on map
               if(flip == 1 || flip == 3){
-                  xs = 15 - x;
+                  xs = 31 - x;
               }
-              if(xa < -16 || xa >= width || ya < 0 || ya >= height){
+              if(xa < -32 || xa >= width || ya < 0 || ya >= height){
                   break;
                   }
               //procerality
                     if ( xa < 0) xa = 0;
                     //takes sprite pixels and renders them
-                    int col = sprite.pixels[xs + ys * 16];
+                    int col = sprite.pixels[xs + ys * 32];
                     
                     //transparency of srite(deleting purple)
-                    if(col != 0xFFFE00FE ) 
+                    if(col != 0xFFFF00FF ) 
                     pixels[xa + ya *width] = col;
                    //pixels[xa + ya * width] = sprite.pixels[x + y * 16];
                }
